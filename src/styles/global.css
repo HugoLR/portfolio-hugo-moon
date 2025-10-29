@@ -1,27 +1,106 @@
 @import "tailwindcss";
 
-/* Variables CSS personalizadas */
+/* ============================================
+   COLOR PALETTE
+   ============================================ */
+
+@theme {
+  /* PRIMARY - Púrpura Violeta */
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-200: #e9d5ff;
+  --color-primary-300: #d8b4fe;
+  --color-primary-400: #c084fc;
+  --color-primary-500: #a855f7;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #3f0f82;
+
+  /* ACCENT - Alias para primary-600 */
+  --color-accent-primary: #7c3aed;
+  --color-accent-hover: #6d28d9;
+  --color-accent-light: #8b5cf6;
+  --color-accent-dark: #5b21b6;
+
+  /* GRAY */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #1a1a1a;
+
+  /* STATUS */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark {
+  /* PRIMARY - Dark Mode */
+  --color-primary-50: #faf5ff;
+  --color-primary-100: #f3e8ff;
+  --color-primary-200: #e9d5ff;
+  --color-primary-300: #d8b4fe;
+  --color-primary-400: #8b5cf6;
+  --color-primary-500: #a78bfa;
+  --color-primary-600: #c4b5fd;
+  --color-primary-700: #ddd6fe;
+  --color-primary-800: #ede9fe;
+  --color-primary-900: #faf5ff;
+
+  /* ACCENT - Dark Mode */
+  --color-accent-primary: #a78bfa;
+  --color-accent-hover: #c4b5fd;
+  --color-accent-light: #ddd6fe;
+  --color-accent-dark: #8b5cf6;
+
+  /* GRAY - Dark Mode */
+  --color-gray-50: #000000;
+  --color-gray-100: #0a0a0a;
+  --color-gray-200: #1a1a1a;
+  --color-gray-300: #27272a;
+  --color-gray-400: #3f3f46;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #9ca3af;
+  --color-gray-700: #d1d5db;
+  --color-gray-800: #e5e7eb;
+  --color-gray-900: #f8f9fa;
+
+  /* STATUS - Dark Mode */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+}
+
+/* ============================================
+   SEMANTIC VARIABLES - Light Mode
+   ============================================ */
+
 :root {
-  /* Light Mode */
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
   --text-primary: #1a1a1a;
   --text-secondary: #6b7280;
   --text-tertiary: #9ca3af;
-  --accent-primary: #7c3aed;
-  --accent-hover: #6d28d9;
   --border-color: #e5e7eb;
 }
 
 .dark {
-  /* Dark Mode */
   --bg-primary: #0a0a0a;
   --bg-secondary: #1a1a1a;
   --text-primary: #f8f9fa;
   --text-secondary: #9ca3af;
   --text-tertiary: #6b7280;
-  --accent-primary: #a78bfa;
-  --accent-hover: #c4b5fd;
   --border-color: #27272a;
 }
 
