@@ -1,0 +1,40 @@
+---
+import Timeline from './Timeline.astro';
+import TimelineItem from './TimelineItem.astro';
+import PulpoLogo from '../assets/logos/pulpo.svg';
+import SupervisorLogo from '../assets/logos/supervisor.svg';
+import YaydooLogo from '../assets/logos/yaydoo.svg';
+---
+
+<section class="h-full py-4">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h3 class="text-4xl font-bold text-text-primary dark:text-text-primary mb-12">
+      Experiencia Laboral
+    </h3>
+
+    <Timeline>
+      <TimelineItem
+        date="2023 - Presente"
+        title="Senior Frontend Developer"
+        description="Liderando la arquitectura de aplicaciones web modernas con React y TypeScript. Responsable de optimizar el rendimiento y garantizar la accesibilidad en todos los proyectos."
+        logo={SupervisorLogo}
+        logoCustomWidth={140}
+      />
+
+      <TimelineItem
+        date="2021 - 2023"
+        title="Frontend Developer"
+        description="Desarrollo de interfaces interactivas y responsivas. Implementación de sistemas de diseño y componentes reutilizables con Tailwind CSS y modern JavaScript."
+        logo={PulpoLogo}
+      />
+
+      <TimelineItem
+        date="2020 - 2021"
+        title="Junior Developer"
+        description="Iniciación en desarrollo web. Trabajé con HTML, CSS y JavaScript para crear páginas web funcionales y optimizadas para diferentes dispositivos."
+        logo={YaydooLogo}
+        isLast={true}
+      />
+    </Timeline>
+  </div>
+</section>
