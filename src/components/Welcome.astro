@@ -3,6 +3,22 @@ import ArrowBottom from '../assets/icons/arrow-bottom.svg';
 ---
 
 <main class="h-full flex flex-col justify-center items-center gap-3.5 relative">
+    <div class="avatar-container relative w-[150px] h-[150px]">
+        <img
+            src="src/assets/images/avatar_gibli.png"
+            width="150"
+            height="150"
+            class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-100 hover:opacity-0"
+            alt="Avatar Ghibli Hugo Luna Reyes"
+        />
+        <img
+            id="avatar-secondary"
+            width="150"
+            height="150"
+            class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-0 hover:opacity-100"
+            alt="Avatar Reality Hugo Luna Reyes" 
+        />
+    </div>
     <h1>Hola 👋 soy Hugo Luna</h1>
     <h3>Seniro Frontend Developer</h3>
     <p class="max-w-3xl text-center">Construyo experiencias digitales excepcionales con código limpio y diseño centrado en el usuario. Apasionado por el performance, la accesibilidad y las tecnologías modernas.</p>
@@ -10,3 +26,18 @@ import ArrowBottom from '../assets/icons/arrow-bottom.svg';
     <button class="btn-primary">Contactame</button>
     <ArrowBottom class="absolute bottom-9 w-10 h-10 text-accent-primary animate-bounce" />
 </main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.avatar-container');
+    const secondaryImg = document.getElementById('avatar-secondary');
+    let imageLoaded = false;
+
+    container?.addEventListener('mouseenter', () => {
+      if (!imageLoaded) {
+        secondaryImg?.setAttribute('src', 'src/assets/images/avatar_reality.jpeg');
+        imageLoaded = true;
+      }
+    });
+  });
+</script>
