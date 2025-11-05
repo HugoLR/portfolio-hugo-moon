@@ -1,29 +1,36 @@
 ---
 import ArrowBottom from '../assets/icons/arrow-bottom.svg';
+import ChatIcon from '../assets/icons/undraw_chat.svg';
 ---
 
-<main class="h-full flex flex-col justify-center items-center gap-3.5 relative">
-    <div class="avatar-container relative w-[150px] h-[150px]">
+<main class="h-full container max-w-4xl px-4 flex flex-col justify-center items-center gap-6">
+  <section class="avatar-container relative w-[100px] h-[100px] group">
+        <div class="absolute bottom-26 left-14 opacity-0 group-hover:opacity-70 transition-opacity duration-300">
+          <div class="relative">
+            <ChatIcon class="w-20 h-auto text-gray-400" />
+            <p class="absolute text-sm top-4 left-3.5">Reality check ✨</p>
+          </div>
+        </div>
         <img
             src="src/assets/images/avatar_gibli.png"
-            width="150"
-            height="150"
+            width="100"
+            height="100"
             class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-100 hover:opacity-0"
             alt="Avatar Ghibli Hugo Luna Reyes"
         />
         <img
             id="avatar-secondary"
-            width="150"
-            height="150"
+            width="100"
+            height="100"
             class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-0 hover:opacity-100"
             alt="Avatar Reality Hugo Luna Reyes" 
         />
-    </div>
-    <h1>Hola 👋 soy Hugo Luna</h1>
-    <h3>Seniro Frontend Developer</h3>
-    <p class="max-w-3xl text-center">Construyo experiencias digitales excepcionales con código limpio y diseño centrado en el usuario. Apasionado por el performance, la accesibilidad y las tecnologías modernas.</p>
-    <p>📍 Toluca, México, Disponible</p>
-    <button class="btn-primary">Contactame</button>
+    </section>
+    <h1 class="text-2xl whitespace-nowrap">Hola 👋, Soy Hugo Luna</h1>
+    <button class="inline-flex items-center justify-center rounded-2xl px-6 py-2 font-semibold text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Disponible para trabajar</button>
+    <!-- <h3 class="text-accent-primary font-bold">Sr. Frontend Developer</h3> -->
+    <p class="max-w-3xl text-base/8">Soy <strong class="text-accent-primary font-bold">Sr. Frontend Developer</strong> con más de 6 años de experiencia creando interfaces web.
+      Disfruto colaborar con equipos multidisciplinarios para entender la lógica de negocio y transformar ideas en herramientas digitales que mejoran la vida de las personas.</p>
     <ArrowBottom class="absolute bottom-9 w-10 h-10 text-accent-primary animate-bounce" />
 </main>
 
