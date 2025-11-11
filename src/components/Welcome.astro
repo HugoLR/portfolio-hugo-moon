@@ -1,50 +1,100 @@
 ---
-import ArrowBottom from '../assets/icons/arrow-bottom.svg';
-import ChatIcon from '../assets/icons/undraw_chat.svg';
+import { Image } from 'astro:assets';
+import ArrowBottom from '@/assets/icons/arrow-bottom.svg';
+import AvatarGhibli from '@/assets/images/avatar_gibli.png';
+import AvatarReality from '@/assets/images/avatar_reality.jpeg';
 ---
 
-<main class="h-full container max-w-4xl px-4 flex flex-col justify-center items-center gap-6">
-  <section class="avatar-container relative w-[100px] h-[100px] group">
-        <div class="absolute bottom-26 left-14 opacity-0 group-hover:opacity-70 transition-opacity duration-300">
-          <div class="relative">
-            <ChatIcon class="w-20 h-auto text-gray-400" />
-            <p class="absolute text-sm top-4 left-3.5">Reality check ✨</p>
-          </div>
-        </div>
-        <img
-            src="src/assets/images/avatar_gibli.png"
-            width="100"
-            height="100"
-            class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-100 hover:opacity-0"
-            alt="Avatar Ghibli Hugo Luna Reyes"
-        />
-        <img
-            id="avatar-secondary"
-            width="100"
-            height="100"
-            class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-0 hover:opacity-100"
-            alt="Avatar Reality Hugo Luna Reyes" 
-        />
-    </section>
-    <h1 class="text-2xl whitespace-nowrap">Hola 👋, Soy Hugo Luna</h1>
-    <button class="inline-flex items-center justify-center rounded-2xl px-6 py-2 font-semibold text-white bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">Disponible para trabajar</button>
-    <!-- <h3 class="text-accent-primary font-bold">Sr. Frontend Developer</h3> -->
-    <p class="max-w-3xl text-base/8">Soy <strong class="text-accent-primary font-bold">Sr. Frontend Developer</strong> con más de 6 años de experiencia creando interfaces web.
-      Disfruto colaborar con equipos multidisciplinarios para entender la lógica de negocio y transformar ideas en herramientas digitales que mejoran la vida de las personas.</p>
-    <ArrowBottom class="absolute bottom-9 w-10 h-10 text-accent-primary animate-bounce" />
+<main class="h-full container mx-auto max-w-4xl px-4 flex flex-col justify-center items-center gap-8">
+  <section class="avatar-container cursor-wand text-accent-primary relative w-[100px] h-[100px] group">
+    <Image
+      id="avatar-primary"
+      src={AvatarGhibli}
+      width={100}
+      height={100}
+      loading="eager"
+      fetchpriority="high"
+      class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-100"
+      alt="Avatar Ghibli Hugo Luna Reyes"
+    />
+    <Image
+      id="avatar-secondary"
+      src={AvatarReality}
+      width={100}
+      height={100}
+      loading="lazy"
+      class="rounded-full absolute inset-0 object-cover transition-opacity duration-300 opacity-0"
+      alt="Avatar Reality Hugo Luna Reyes"
+    />
+  </section>
+
+  <h1 class="text-2xl font-bold whitespace-nowrap flex items-center gap-2 text-text-primary">
+    Hola, soy Hugo Luna Reyes 👋
+  </h1>
+
+  <a
+    href="https://www.linkedin.com/in/hugolr/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center justify-center rounded-2xl px-6 py-2 font-semibold text-lg text-white bg-accent-primary hover:bg-accent-hover transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+  >
+    Trabajemos juntos
+  </a>
+
+  <p class="max-w-3xl text-lg/8 text-text-primary md:text-center">
+    <strong class="text-accent-primary font-bold">Sr. Frontend Developer</strong> con más de 6 años de experiencia creando interfaces web.
+    Disfruto colaborar con equipos multidisciplinarios para entender la lógica de negocio y transformar ideas en herramientas digitales que mejoran la vida de las personas.
+  </p>
+
+  <ArrowBottom class="absolute bottom-9 w-10 h-10 z-10 text-accent-primary animate-vertical-bounce" />
 </main>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.avatar-container');
-    const secondaryImg = document.getElementById('avatar-secondary');
-    let imageLoaded = false;
+    const container = document.querySelector('.avatar-container') as HTMLElement | null;
+    const primaryImg = document.getElementById('avatar-primary') as HTMLImageElement | null;
+    const secondaryImg = document.getElementById('avatar-secondary') as HTMLImageElement | null;
 
-    container?.addEventListener('mouseenter', () => {
-      if (!imageLoaded) {
-        secondaryImg?.setAttribute('src', 'src/assets/images/avatar_reality.jpeg');
-        imageLoaded = true;
+    if (!container || !primaryImg || !secondaryImg) {
+      return;
+    }
+
+    let isShowingSecondary = false;
+    let animationTimeout: number | null = null;
+
+    const handleAvatarClick = () => {
+      isShowingSecondary = !isShowingSecondary;
+
+      if (animationTimeout !== null) {
+        clearTimeout(animationTimeout);
       }
-    });
+
+      container.classList.add('animate-tada');
+
+      if (isShowingSecondary) {
+        primaryImg.style.opacity = '0';
+        secondaryImg.style.opacity = '1';
+      } else {
+        primaryImg.style.opacity = '1';
+        secondaryImg.style.opacity = '0';
+      }
+
+
+      animationTimeout = window.setTimeout(() => {
+        container.classList.remove('animate-tada');
+        animationTimeout = null;
+      }, 1000);
+    };
+
+    container.addEventListener('click', handleAvatarClick);
+
+    const cleanup = () => {
+      if (animationTimeout !== null) {
+        clearTimeout(animationTimeout);
+      }
+      container.removeEventListener('click', handleAvatarClick);
+    };
+
+    window.addEventListener('beforeunload', cleanup);
   });
 </script>
