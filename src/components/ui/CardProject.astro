@@ -1,0 +1,107 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import WorldIcon from "@/assets/icons/world-www.svg";
+import Card from "@/components/ui/Card.astro";
+import CardHeader from "@/components/ui/CardHeader.astro";
+import CardTitle from "@/components/ui/CardTitle.astro";
+import CardContent from "@/components/ui/CardContent.astro";
+import CardFooter from "@/components/ui/CardFooter.astro";
+
+interface Link {
+  icon: string;
+  type: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  href?: string;
+  description: string;
+  tags: string[];
+  image?: ImageMetadata;
+  links?: Link[];
+  className?: string;
+}
+
+const { title, href = "#", description, tags, image, links, className = "" } = Astro.props;
+---
+
+<style>
+  .card-link {
+    transition: all 0.3s ease-out;
+  }
+
+  .card-link:hover {
+    transform: translateY(-2px);
+    background-color: var(--color-accent-primary);
+    color: white;
+    border-color: var(--color-accent-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-link {
+      transition: none;
+    }
+  }
+</style>
+
+<Card className={`${className}`}>
+  <a href={href} target="_blank" class="block cursor-pointer">
+    {
+      image && (
+        <Image
+          src={image}
+          alt={title}
+          class="h-40 w-full overflow-hidden object-cover object-top scale-110 hover:scale-100 transition-transform duration-300"
+          loading="lazy"
+          fetchpriority="low"
+        />
+      )
+    }
+  </a>
+
+  <CardHeader>
+    <div>
+      <CardTitle>{title}</CardTitle>
+    </div>
+  </CardHeader>
+
+  <CardContent>
+    <p class="font-sans text-xs text-text-secondary">
+      {description}
+    </p>
+    {
+      tags && tags.length > 0 && (
+        <div class="flex mt-3 flex-wrap gap-3">
+          {tags.map((tag) => (
+            <span class="inline-block rounded-full px-4 py-1 text-[10px] font-medium text-text-secondary border border-text-primary">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )
+    }
+  </CardContent>
+
+  <CardFooter>
+    {
+      links && links.length > 0 && (
+        <div class="flex flex-row flex-wrap items-start gap-2 mb-4">
+          {links.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              role="button"
+              class="card-link cursor-pointer inline-flex items-center gap-2 px-3 py-1 rounded-md text-base font-medium border border-accent-light text-text-secondary"
+            >
+              <WorldIcon class="w-4 h-4" />
+              <span>{link.type}</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </CardFooter>
+</Card>

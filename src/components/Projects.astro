@@ -1,0 +1,45 @@
+
+---
+import CardProject from "@/components/ui/CardProject.astro";
+import RankyImage from "@/assets/projects/ranky.png";
+import UnderlineIcon from '@/assets/icons/fun-underline.svg';
+
+const projects = [
+  {
+    title: "Ranky.mx",
+    href: "https://www.ranky.mx/",
+    description: "Una herramienta para comparar tasas de inversión que ofrecen Instituciones Financieras Reguladas en México.",
+    tags: ["Astro", "React", "n8n", "MongoDB", "TailwindCSS"],
+    image: RankyImage,
+    links: [
+      {
+        icon: "🌐",
+        type: "Website",
+        href: "https://www.ranky.mx/"
+      }
+    ]
+  },  
+];
+---
+
+<section class="scroll-reveal h-full py-4">
+  <div class="container px-4 mx-auto max-w-4xl">
+    <h3 class="flex flex-col items-center text-2xl font-bold mb-14 text-text-primary">
+      Proyectos personales
+      <UnderlineIcon class="underline-icon text-accent-light w-50 h-16" />
+    </h3>
+
+    <div class='grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center'>
+      {projects.map((project) => (
+        <CardProject
+          title={project.title}
+          href={project.href}
+          description={project.description}
+          tags={project.tags}
+          image={project.image}
+          links={project.links}
+        />
+      ))}
+    </div>
+  </div>
+</section>
