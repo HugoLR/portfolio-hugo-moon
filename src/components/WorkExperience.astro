@@ -1,39 +1,49 @@
 ---
-import Timeline from './Timeline.astro';
-import TimelineItem from './TimelineItem.astro';
-import PulpoLogo from '../assets/logos/pulpo.svg';
-import SupervisorLogo from '../assets/logos/supervisor.svg';
-import YaydooLogo from '../assets/logos/yaydoo.svg';
+import Timeline from '@/components/Timeline.astro';
+import TimelineItem from '@/components/TimelineItem.astro';
+import PulpoLogo from '@/assets/logos/pulpo.svg';
+import SupervisorLogo from '@/assets/logos/supervisor.svg';
+import YaydooLogo from '@/assets/logos/yaydoo.svg';
+import UnderlineIcon from '@/assets/icons/fun-underline.svg';
 ---
 
-<section class="h-full py-4">
+<section class="scroll-reveal min-h-full py-4">
   <div class="container mx-auto px-4 max-w-4xl">
-    <h3 class="text-4xl font-bold text-text-primary dark:text-text-primary mb-12">
+    <h3 class="flex flex-col items-center text-2xl font-bold mb-14 text-text-primary">
       Experiencia Laboral
+      <UnderlineIcon class="underline-icon text-accent-light w-50 h-16" />
     </h3>
 
     <Timeline>
       <TimelineItem
-        date="2023 - Presente"
-        title="Senior Frontend Developer"
-        description="Liderando la arquitectura de aplicaciones web modernas con React y TypeScript. Responsable de optimizar el rendimiento y garantizar la accesibilidad en todos los proyectos."
+        date="Abril 2025 - Septiembre 2025"
+        title="Sr. Frontend Developer | Automation Lead"
+        description="Creé y mejoré funcionalidades de la aplicación web con React y Next.js, y desarrollé agentes conversacionales (chatbots y voice bots) para automatizar y optimizar flujos."
         logo={SupervisorLogo}
+        logoHref="https://getsupervisor.ai/"
         logoCustomWidth={140}
+        logoClass="text-supervisor-text"
+        companyName="Supervisor"
       />
 
       <TimelineItem
-        date="2021 - 2023"
-        title="Frontend Developer"
-        description="Desarrollo de interfaces interactivas y responsivas. Implementación de sistemas de diseño y componentes reutilizables con Tailwind CSS y modern JavaScript."
+        date="2022 - 2025"
+        title="Sr. Frontend Developer"
+        description="Desarrollé nuevas funcionalidades en la plataforma principal y construí la interfaz para una nueva unidad de negocio, manteniendo coherencia visual y funcional con el sistema existente en Angular."
         logo={PulpoLogo}
+        logoHref="https://www.getpulpo.com/"
+        companyName="Pulpo"
       />
 
       <TimelineItem
-        date="2020 - 2021"
-        title="Junior Developer"
-        description="Iniciación en desarrollo web. Trabajé con HTML, CSS y JavaScript para crear páginas web funcionales y optimizadas para diferentes dispositivos."
+        date="2019 - 2022"
+        title="Jr. Frontend Developer"
+        description="Colaboré en el desarrollo y mejora continua de la web app, incorporando nuevas funcionalidades y garantizando una experiencia fluida con React."
         logo={YaydooLogo}
+        logoHref="https://yaydoo.com/"
+        logoClass="text-yaydoo-text"
         isLast={true}
+        companyName="Yaydoo"
       />
     </Timeline>
   </div>
