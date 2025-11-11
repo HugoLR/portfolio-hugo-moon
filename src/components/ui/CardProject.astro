@@ -68,14 +68,14 @@ const { title, href = "#", description, tags, image, links, className = "" } = A
   </CardHeader>
 
   <CardContent>
-    <p class="font-sans text-xs text-text-secondary">
+    <p class="text-base text-text-secondary">
       {description}
     </p>
     {
       tags && tags.length > 0 && (
         <div class="flex mt-3 flex-wrap gap-3">
           {tags.map((tag) => (
-            <span class="inline-block rounded-full px-4 py-1 text-[10px] font-medium text-text-secondary border border-text-primary">
+            <span class="inline-block rounded-full px-4 py-1 text-xs font-medium text-text-secondary border border-text-primary">
               {tag}
             </span>
           ))}
