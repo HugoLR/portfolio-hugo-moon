@@ -1,0 +1,44 @@
+---
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import GitHubIcon from "@/assets/icons/brand-github.svg";
+import LinkedInIcon from "@/assets/icons/brand-linkedin.svg";
+---
+
+
+<nav
+  class="animate-fade-in-down fixed top-4 left-1/2 -translate-x-1/2 z-50 w-fit flex items-center gap-2 px-4 py-3 bg-navbar-bg/80 border border-navbar-border backdrop-blur-md rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+  aria-label="Main navigation"
+>
+  <ul class="flex items-center gap-2">
+    <li class="animate-fade-in-down" style="animation-delay: 0.1s;">
+       <a
+        href="https://github.com/HugoLR"
+        aria-label="Visita mi perfil de GitHub"
+        title="Perfil de GitHub"
+        class="group flex items-center justify-center w-12 h-12 rounded-full hover:bg-accent-hover transition-all duration-300 active:scale-95"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <GitHubIcon class="w-6 h-6 text-navbar-icon group-hover:text-white" />
+      </a>
+    </li>
+    <li class="animate-fade-in-down" style="animation-delay: 0.2s;">
+      <a
+        href="https://www.linkedin.com/in/hugolr/"
+        aria-label="Visita mi perfil de LinkedIn"
+        title="Perfil de LinkedIn "
+        class="group flex items-center justify-center w-12 h-12 rounded-full hover:bg-accent-hover transition-all duration-300 active:scale-95"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <LinkedInIcon class="w-6 h-6 text-navbar-icon group-hover:text-white" />
+      </a>
+    </li>
+  </ul>
+
+  <div class="animate-fade-in-down w-px h-6 mx-1 bg-text-primary" style="animation-delay: 0.3s;"></div>
+
+  <ul>
+    <li class="animate-fade-in-down" style="animation-delay: 0.4s;"><ThemeToggle /></li>
+  </ul>
+</nav>
