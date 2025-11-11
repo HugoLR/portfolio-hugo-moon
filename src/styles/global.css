@@ -1,44 +1,29 @@
 @import "tailwindcss";
-
-/* ============================================
-   COLOR PALETTE
-   ============================================ */
+@plugin "@midudev/tailwind-animations";
 
 @theme {
-  /* PRIMARY - Púrpura Violeta */
-  --color-primary-50: #faf5ff;
-  --color-primary-100: #f3e8ff;
-  --color-primary-200: #e9d5ff;
-  --color-primary-300: #d8b4fe;
-  --color-primary-400: #c084fc;
-  --color-primary-500: #a855f7;
-  --color-primary-600: #7c3aed;
-  --color-primary-700: #6d28d9;
-  --color-primary-800: #5b21b6;
-  --color-primary-900: #3f0f82;
+  /* Primary palette Purple Violet */
+  --color-accent-primary: #5b21b6;
+  --color-accent-hover: #4c1d95;
+  --color-accent-light: #7c3aed;
+  --color-accent-darker: #3b0764;
 
-  /* ACCENT - Alias para primary-600 */
-  --color-accent-primary: #7c3aed;
-  --color-accent-hover: #6d28d9;
-  --color-accent-light: #8b5cf6;
-  --color-accent-dark: #5b21b6;
+  /* Text */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
 
-  /* GRAY */
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #1a1a1a;
+  /* Supervisor Logo */
+  --color-supervisor-text: #003768;
 
-  /* STATUS */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  /* Yaydoo Logo */
+  --color-yaydoo-text: #000000;
+
+  /* Navbar Light Mode */
+  --color-navbar-bg: #ffffff;
+  --color-navbar-border: #e5e7eb;
+  --color-navbar-separator: #e5e7eb;
+  --color-navbar-icon: #1a1a1a;
 }
 
 /* ============================================
@@ -46,126 +31,91 @@
    ============================================ */
 
 .dark {
-  /* PRIMARY - Dark Mode */
-  --color-primary-50: #faf5ff;
-  --color-primary-100: #f3e8ff;
-  --color-primary-200: #e9d5ff;
-  --color-primary-300: #d8b4fe;
-  --color-primary-400: #8b5cf6;
-  --color-primary-500: #a78bfa;
-  --color-primary-600: #c4b5fd;
-  --color-primary-700: #ddd6fe;
-  --color-primary-800: #ede9fe;
-  --color-primary-900: #faf5ff;
+  /* Primary palette Purple Violet */
+  --color-accent-primary: #8b5cf6;
+  --color-accent-hover: #a78bfa;
+  --color-accent-light: #c4b5fd;
+  --color-accent-darker: #7c3aed;
 
-  /* ACCENT - Dark Mode */
-  --color-accent-primary: #a78bfa;
-  --color-accent-hover: #c4b5fd;
-  --color-accent-light: #ddd6fe;
-  --color-accent-dark: #8b5cf6;
+  /* Text */
+  --color-text-primary: #f8f9fa;
+  --color-text-secondary: #9ca3af;
+  --color-text-tertiary: #6b7280;
 
-  /* GRAY - Dark Mode */
-  --color-gray-50: #000000;
-  --color-gray-100: #0a0a0a;
-  --color-gray-200: #1a1a1a;
-  --color-gray-300: #27272a;
-  --color-gray-400: #3f3f46;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #9ca3af;
-  --color-gray-700: #d1d5db;
-  --color-gray-800: #e5e7eb;
-  --color-gray-900: #f8f9fa;
+  /* Supervisor Logo */
+  --color-supervisor-text: #f8f9fa;
 
-  /* STATUS - Dark Mode */
-  --color-success: #34d399;
-  --color-warning: #fbbf24;
-  --color-error: #f87171;
+  /* Yaydoo Logo */
+  --color-yaydoo-text: #ffffff;
+
+  /* Navbar Dark Mode */
+  --color-navbar-bg: #111827;
+  --color-navbar-border: #4b5563;
+  --color-navbar-separator: #4b5563;
+  --color-navbar-icon: #ffffff;
 }
 
-/* ============================================
-   SEMANTIC VARIABLES - Light Mode
-   ============================================ */
-
-:root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #1a1a1a;
-  --text-secondary: #6b7280;
-  --text-tertiary: #9ca3af;
-  --border-color: #e5e7eb;
-}
-
-.dark {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #1a1a1a;
-  --text-primary: #f8f9fa;
-  --text-secondary: #9ca3af;
-  --text-tertiary: #6b7280;
-  --border-color: #27272a;
-}
-
-/* Base styles */
-* {
-  border-color: var(--border-color);
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
   font-family: 'Inter Variable', system-ui, sans-serif;
-  transition: background-color 300ms ease, color 300ms ease;
-}
-
-/* Custom classes para backgrounds */
-.bg-hero-gradient-light {
-  background-image: radial-gradient(
-    100% 50% at 50% 0%,
-    rgba(124, 58, 237, 0.13) 0%,
-    rgba(124, 58, 237, 0) 50%,
-    transparent 100%
-  );
-}
-
-.bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, #4f4f4f2e 1px, transparent 1px),
-    linear-gradient(to bottom, #8080800a 1px, transparent 1px);
-  background-size: 14px 24px;
-}
-
-.bg-glow-purple {
-  background-image: radial-gradient(
-    circle 400px at 50% 300px,
-    rgba(167, 139, 250, 0.2),
-    #000
-  );
-}
-
-
-/* Link accent */
-.link-accent {
   position: relative;
-  color: var(--text-secondary);
-  transition: color 300ms ease;
 }
 
-.link-accent:hover {
-  color: var(--accent-primary);
-}
-
-.link-accent::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
+/* Global Dynamic Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--accent-primary);
-  transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-color: white;
+  background-image: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgba(120, 119, 198, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+  transition: background-color 0.3s ease, background-image 0.3s ease;
 }
 
-.link-accent:hover::after {
-  width: 100%;
+html.dark body::before {
+  background-color: rgb(10, 10, 10);
+  background-image: radial-gradient(
+    ellipse 80% 80% at 50% -20%,
+    rgba(120, 119, 198, 0.3),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+/* Cursor Custom */
+.cursor-wand {
+  cursor: url('/src/assets/icons/wand.svg') 1 1, auto;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Make animate-bounce infinite and slower */
+.animate-vertical-bounce {
+  animation-iteration-count: infinite !important;
+  animation-duration: 2s !important;
 }
 
 /* Accessibility */
@@ -174,5 +124,20 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .animate-vertical-bounce {
+    animation-iteration-count: none !important;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+  }
+
+  .scroll-reveal.reveal {
+    opacity: 1;
+    transform: none;
   }
 }
