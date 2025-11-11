@@ -1,0 +1,70 @@
+---
+import BrightnessDownIcon from "@/assets/icons/brightness-down.svg";
+import MoonIcon from "@/assets/icons/moon.svg";
+---
+
+<button
+  id="theme-toggle"
+  class="group flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-accent-hover transition-colors duration-300 active:scale-95"
+  aria-label="Toggle theme mode"
+  title="Toggle theme"
+>
+  <span class="w-8 h-8 flex items-center justify-center">
+    <BrightnessDownIcon id="icon-brightness" class="w-6 h-6 text-navbar-icon group-hover:text-white hidden" />
+    <MoonIcon id="icon-moon" class="w-6 h-6 text-navbar-icon group-hover:text-white hidden" />
+  </span>
+</button>
+
+<script>
+  const themeToggleBtn = document.getElementById("theme-toggle") as HTMLButtonElement | null;
+  const iconBrightness = document.getElementById("icon-brightness") as HTMLElement | null;
+  const iconMoon = document.getElementById("icon-moon") as HTMLElement | null;
+
+  function updateIcon(theme: 'dark' | 'light'): void {
+    if (!iconBrightness || !iconMoon) return;
+
+    const isDarkMode = theme === "dark";
+
+    if (isDarkMode) {
+      iconBrightness.classList.add("hidden");
+      iconMoon.classList.remove("hidden");
+      return;
+    } 
+    
+    iconBrightness.classList.remove("hidden");
+    iconMoon.classList.add("hidden");
+  }
+
+  function applyTheme(theme: 'dark' | 'light'): void {
+    const htmlElement = document.documentElement;
+
+    if (theme === "dark") {
+      htmlElement.classList.add("dark");
+      return;
+    } 
+      
+    htmlElement.classList.remove("dark");
+  }
+
+  const handleThemeToggle = (): void => {
+    const current = localStorage.getItem("theme") || "light";
+    const newTheme = current === "dark" ? "light" : "dark";
+    applyTheme(newTheme);
+    updateIcon(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+ 
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", handleThemeToggle);
+
+    const cleanup = (): void => {
+      themeToggleBtn.removeEventListener("click", handleThemeToggle);
+    };
+
+    window.addEventListener("beforeunload", cleanup);
+  }
+  
+  const currentTheme = localStorage.getItem("theme") || "light";
+  updateIcon(currentTheme as 'dark' | 'light');
+</script>
