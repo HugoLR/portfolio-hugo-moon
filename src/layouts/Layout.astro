@@ -1,29 +1,79 @@
 ---
-import "../styles/global.css";
-import Background from "../components/Background.astro";
+import "@/styles/global.css";
+import Navbar from "@/components/Navbar.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="generator" content={Astro.generator} />
-    <title>Portfolio Hugo Moon</title>
+    <title>Hugo Moon</title>
+
+    <script is:inline>
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
   </head>
   <body>
-    <Background />
+    <Navbar />
     <slot />
+
+   
   </body>
+   <script>
+      const initScrollRevealAnimation = (): void => {
+        const observerOptions: IntersectionObserverInit = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('reveal');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        revealElements.forEach((el) => observer.observe(el));
+
+        const cleanup = (): void => {
+          observer.disconnect();
+        };
+
+        // Clean up on page unload
+        window.addEventListener('beforeunload', cleanup);
+      };
+
+      if (document.readyState === 'loading') {
+         document.addEventListener('DOMContentLoaded', initScrollRevealAnimation);
+      } else {
+        initScrollRevealAnimation();
+      }
+      
+    </script>
 </html>
 
 <style>
   html,
   body {
-    margin: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
   }
 </style>
 
