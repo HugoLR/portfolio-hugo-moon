@@ -47,7 +47,8 @@ import MoonIcon from "@/assets/icons/moon.svg";
   }
 
   const handleThemeToggle = (): void => {
-    const current = localStorage.getItem("theme") || "light";
+    const htmlElement = document.documentElement;
+    const current = htmlElement.classList.contains("dark") ? "dark" : "light";
     const newTheme = current === "dark" ? "light" : "dark";
     applyTheme(newTheme);
     updateIcon(newTheme);
