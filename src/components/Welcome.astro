@@ -1,29 +1,26 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import ArrowBottom from '@/assets/icons/arrow-bottom.svg';
 import AvatarGhibli from '@/assets/images/avatar_gibli.png';
 import AvatarReality from '@/assets/images/avatar_reality.jpeg';
+
+const secondaryImageOptimized = await getImage({
+  src: AvatarGhibli,
+  width: 1024,
+  height: 1024,
+});
 ---
 
 <main class="h-full container mx-auto max-w-4xl px-4 flex flex-col justify-center items-center gap-6 md:gap-8">
-  <section class="avatar-container cursor-wand text-accent-primary relative w-[100px] h-[100px] group">
+  <section class="avatar-container cursor-wand relative w-[100px] h-[100px] group">
     <Image
       id="avatar-primary"
-      src={AvatarGhibli}
-      width={100}
-      height={100}
+      src={AvatarReality}
       loading="eager"
+      width={500}
+      height={500}
       fetchpriority="high"
       class="rounded-full absolute inset-0 object-cover transition-opacity border border-text-tertiary duration-300 opacity-100"
-      alt="Avatar Ghibli Hugo Luna Reyes"
-    />
-    <Image
-      id="avatar-secondary"
-      src={AvatarReality}
-      width={100}
-      height={100}
-      loading="lazy"
-      class="rounded-full absolute inset-0 object-cover transition-opacity border border-text-tertiary duration-300 opacity-0"
       alt="Avatar Reality Hugo Luna Reyes"
     />
   </section>
@@ -49,20 +46,42 @@ import AvatarReality from '@/assets/images/avatar_reality.jpeg';
   <ArrowBottom class="absolute bottom-6 w-8 h-8 z-10 md:w-10 md:h-10 text-accent-primary animate-vertical-bounce" />
 </main>
 
-<script>
+<script define:vars={{ optimizedSecondaryUrl: secondaryImageOptimized.src }} is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('.avatar-container') as HTMLElement | null;
-    const primaryImg = document.getElementById('avatar-primary') as HTMLImageElement | null;
-    const secondaryImg = document.getElementById('avatar-secondary') as HTMLImageElement | null;
+    const container = document.querySelector('.avatar-container');
+    const primaryImg = document.getElementById('avatar-primary');
 
-    if (!container || !primaryImg || !secondaryImg) {
+    if (!container || !primaryImg) {
       return;
     }
 
     let isShowingSecondary = false;
-    let animationTimeout: number | null = null;
+    let animationTimeout = null;
+    let secondaryImg = null;
+    let secondaryLoaded = false;
+
+    const createSecondaryImage = () => {
+      if (secondaryLoaded) {
+        return;
+      }
+
+      secondaryImg = document.createElement('img');
+      secondaryImg.id = 'avatar-secondary';
+      secondaryImg.src = optimizedSecondaryUrl;
+      secondaryImg.loading = 'eager';
+      secondaryImg.decoding = 'async';
+      secondaryImg.className = 'rounded-full absolute inset-0 object-cover transition-opacity border border-text-tertiary duration-300 opacity-0';
+      secondaryImg.alt = 'Avatar Ghibli Hugo Luna Reyes';
+
+      container.appendChild(secondaryImg);
+      secondaryLoaded = true;
+    };
 
     const handleAvatarClick = () => {
+      if (!secondaryLoaded) {
+        createSecondaryImage();
+      }
+
       isShowingSecondary = !isShowingSecondary;
 
       if (animationTimeout !== null) {
@@ -71,12 +90,14 @@ import AvatarReality from '@/assets/images/avatar_reality.jpeg';
 
       container.classList.add('animate-tada');
 
-      if (isShowingSecondary) {
+      if (isShowingSecondary && secondaryImg) {
         primaryImg.style.opacity = '0';
         secondaryImg.style.opacity = '1';
       } else {
         primaryImg.style.opacity = '1';
-        secondaryImg.style.opacity = '0';
+        if (secondaryImg) {
+          secondaryImg.style.opacity = '0';
+        }
       }
 
       animationTimeout = window.setTimeout(() => {
