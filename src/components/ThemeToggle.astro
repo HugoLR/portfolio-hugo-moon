@@ -65,6 +65,8 @@ import MoonIcon from "@/assets/icons/moon.svg";
     window.addEventListener("beforeunload", cleanup);
   }
   
-  const currentTheme = localStorage.getItem("theme") || "light";
+  const savedTheme = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const currentTheme = savedTheme || (prefersDark ? "dark" : "light");
   updateIcon(currentTheme as 'dark' | 'light');
 </script>
