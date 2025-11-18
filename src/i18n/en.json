@@ -1,0 +1,65 @@
+{
+  "layout": {
+    "title": "Hugo Moon",
+    "og_title": "Hugo Moon - Frontend Developer Portfolio",
+    "og_description": "Sr. Frontend Developer. I transform ideas into maintainable digital products.",
+    "og_site_name": "Hugo Moon",
+    "og_locale": "en_US"
+  },
+  "navbar": {
+    "github": {
+      "aria_label": "Visit my GitHub profile",
+      "title": "GitHub Profile"
+    },
+    "linkedin": {
+      "aria_label": "Visit my LinkedIn profile",
+      "title": "LinkedIn Profile"
+    },
+    "language": "Language",
+    "language_toggle": "🇲🇽 ES"
+  },
+  "welcome": {
+    "greeting": "Hi, I'm Hugo Luna 👋",
+    "title": "Sr. Frontend Developer",
+    "description": "with over 6 years of experience creating web interfaces. I transform ideas into digital products. I collaborate with teams that understand business logic and materialize it with maintainable code.",
+    "cta_button": "Let's work together",
+    "avatar": {
+      "primary_alt": "Avatar Reality Hugo Luna Reyes",
+      "secondary_alt": "Avatar Ghibli Hugo Luna Reyes"
+    }
+  },
+  "work_experience": {
+    "title": "Work Experience",
+    "subtitle": "I have collaborated and grown alongside incredible teams in these startups.",
+    "companies": {
+      "supervisor": {
+        "position": "Sr. Frontend Developer | Automation Lead",
+        "period": "April 2025 - September 2025",
+        "description": "Created and improved web application features with React and Next.js, and developed conversational agents (chatbots and voice bots) to automate and optimize workflows.",
+        "website_aria_label": "Visit Supervisor website"
+      },
+      "pulpo": {
+        "position": "Sr. Frontend Developer",
+        "period": "2022 - 2025",
+        "description": "Developed new features in the main platform and built the interface for a new business unit, maintaining visual and functional consistency with the existing system in Angular.",
+        "website_aria_label": "Visit Pulpo website"
+      },
+      "yaydoo": {
+        "position": "Jr. Frontend Developer",
+        "period": "2019 - 2022",
+        "description": "Collaborated on the creation and continuous improvement of the web app, incorporating new features and ensuring a smooth experience with React.",
+        "website_aria_label": "Visit Yaydoo website"
+      }
+    }
+  },
+  "projects": {
+    "title": "Personal Projects",
+    "items": {
+      "ranky": {
+        "title": "Ranky.mx",
+        "description": "A tool to compare investment rates offered by Regulated Financial Institutions in Mexico.",
+        "link_type": "Website"
+      }
+    }
+  }
+}

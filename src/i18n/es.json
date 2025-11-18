@@ -1,0 +1,65 @@
+{
+  "layout": {
+    "title": "Hugo Moon",
+    "og_title": "Hugo Moon - Portafolio de Hugo Luna Reyes",
+    "og_description": "Sr. Frontend Developer. Transformo ideas en productos digitales mantenibles.",
+    "og_site_name": "Hugo Moon",
+    "og_locale": "es_MX"
+  },
+  "navbar": {
+    "github": {
+      "aria_label": "Visita mi perfil de GitHub",
+      "title": "Perfil de GitHub"
+    },
+    "linkedin": {
+      "aria_label": "Visita mi perfil de LinkedIn",
+      "title": "Perfil de LinkedIn"
+    },
+    "language": "Idioma",
+    "language_toggle": "🇺🇸 EN"
+  },
+  "welcome": {
+    "greeting": "Hola, soy Hugo Luna 👋",
+    "title": "Sr. Frontend Developer",
+    "description": "con más de 6 años de experiencia creando interfaces web. Transformo ideas en productos digitales. Colaboro con equipos que entienden la lógica de negocio y la materializan con código mantenible.",
+    "cta_button": "Trabajemos juntos",
+    "avatar": {
+      "primary_alt": "Avatar Reality Hugo Luna Reyes",
+      "secondary_alt": "Avatar Ghibli Hugo Luna Reyes"
+    }
+  },
+  "work_experience": {
+    "title": "Experiencia Laboral",
+    "subtitle": "He colaborado y crecido junto a increíbles equipos en estas startups.",
+    "companies": {
+      "supervisor": {
+        "position": "Sr. Frontend Developer | Automation Lead",
+        "period": "Abril 2025 - Septiembre 2025",
+        "description": "Creé y mejoré funcionalidades de la aplicación web con React y Next.js, y desarrollé agentes conversacionales (chatbots y voice bots) para automatizar y optimizar flujos.",
+        "website_aria_label": "Visita el sitio web de Supervisor"
+      },
+      "pulpo": {
+        "position": "Sr. Frontend Developer",
+        "period": "2022 - 2025",
+        "description": "Desarrollé nuevas funcionalidades en la plataforma principal y construí la interfaz para una nueva unidad de negocio, manteniendo coherencia visual y funcional con el sistema existente en Angular.",
+        "website_aria_label": "Visita el sitio web de Pulpo"
+      },
+      "yaydoo": {
+        "position": "Jr. Frontend Developer",
+        "period": "2019 - 2022",
+        "description": "Colaboré en la creación y mejora continua de la web app, incorporando nuevas funcionalidades y garantizando una experiencia fluida con React.",
+        "website_aria_label": "Visita el sitio web de Yaydoo"
+      }
+    }
+  },
+  "projects": {
+    "title": "Proyectos personales",
+    "items": {
+      "ranky": {
+        "title": "Ranky.mx",
+        "description": "Una herramienta para comparar tasas de inversión que ofrecen Instituciones Financieras Reguladas en México.",
+        "link_type": "Sitio Web"
+      }
+    }
+  }
+}
