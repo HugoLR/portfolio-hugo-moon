@@ -3,11 +3,11 @@ import { defineConfig } from 'astro/config';
 import path from 'path';
 
 import tailwindcss from '@tailwindcss/vite';
-import { i18nConfig } from '@/i18n/config';
+import { i18nConfig } from './src/i18n/config';
 
 // https://astro.build/config
 export default defineConfig({
-  ...i18nConfig,
+  i18n: i18nConfig,
   vite: {
     plugins: [tailwindcss()],
     resolve: {
