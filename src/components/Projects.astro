@@ -3,29 +3,33 @@
 import CardProject from "@/components/ui/CardProject.astro";
 import RankyImage from "@/assets/projects/ranky.png";
 import UnderlineIcon from '@/assets/icons/fun-underline.svg';
+import { getI18N, type Language } from '@/i18n/utils';
+
+const currentLocale = Astro.currentLocale || 'en';
+const i18n = getI18N(currentLocale as Language);
 
 const projects = [
   {
-    title: "Ranky.mx",
+    title: i18n.t('projects.items.ranky.title'),
     href: "https://www.ranky.mx/",
-    description: "Una herramienta para comparar tasas de inversión que ofrecen Instituciones Financieras Reguladas en México.",
+    description: i18n.t('projects.items.ranky.description'),
     tags: ["Astro", "React", "n8n", "MongoDB", "TailwindCSS"],
     image: RankyImage,
     links: [
       {
         icon: "🌐",
-        type: "Website",
+        type: i18n.t('projects.items.ranky.link_type'),
         href: "https://www.ranky.mx/"
       }
     ]
-  },  
+  },
 ];
 ---
 
 <section class="scroll-reveal h-full py-4">
   <div class="container px-4 mx-auto max-w-4xl">
     <h3 class="flex flex-col items-center text-2xl font-bold mb-14 text-text-primary">
-      Proyectos personales
+      {i18n.t('projects.title')}
       <UnderlineIcon class="underline-icon text-accent-light w-50 h-16" />
     </h3>
 

@@ -3,6 +3,10 @@ import { Image, getImage } from 'astro:assets';
 import ArrowBottom from '@/assets/icons/arrow-bottom.svg';
 import AvatarGhibli from '@/assets/images/avatar_gibli.png';
 import AvatarReality from '@/assets/images/avatar_reality.jpeg';
+import { getI18N, type Language } from '@/i18n/utils';
+
+const currentLocale = Astro.currentLocale || 'en';
+const i18n = getI18N(currentLocale as Language);
 
 const secondaryImageOptimized = await getImage({
   src: AvatarGhibli,
@@ -21,12 +25,12 @@ const secondaryImageOptimized = await getImage({
       height={500}
       fetchpriority="high"
       class="rounded-full absolute inset-0 object-cover transition-opacity border border-text-tertiary duration-300 opacity-100"
-      alt="Avatar Reality Hugo Luna Reyes"
+      alt={i18n.t('welcome.avatar.primary_alt')}
     />
   </section>
 
   <h1 class="text-2xl font-bold whitespace-nowrap flex items-center gap-2 text-text-primary">
-    Hola, soy Hugo Luna 👋
+    {i18n.t('welcome.greeting')}
   </h1>
 
   <a
@@ -35,12 +39,11 @@ const secondaryImageOptimized = await getImage({
     rel="noopener noreferrer"
     class="inline-flex items-center justify-center rounded-2xl px-6 py-2 font-semibold text-lg md:text-xl text-white bg-accent-primary hover:bg-accent-hover transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
   >
-    Trabajemos juntos
+    {i18n.t('welcome.cta_button')}
   </a>
 
   <p class="max-w-3xl text-base/8 md:text-lg/8 text-text-primary md:text-center">
-    <strong class="text-accent-primary font-bold">Sr. Frontend Developer</strong> con más de 6 años de experiencia creando interfaces web. Transformo ideas en productos digitales. Colaboro
-    con equipos que entienden la lógica de negocio y la materializan con código mantenible.
+    <strong class="text-accent-primary font-bold">Sr. Frontend Developer</strong> {i18n.t('welcome.description')}
   </p>
 
   <ArrowBottom class="absolute bottom-6 w-8 h-8 z-10 md:w-10 md:h-10 text-accent-primary animate-vertical-bounce" />

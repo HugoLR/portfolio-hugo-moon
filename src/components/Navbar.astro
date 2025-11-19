@@ -2,6 +2,14 @@
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import GitHubIcon from "@/assets/icons/brand-github.svg";
 import LinkedInIcon from "@/assets/icons/brand-linkedin.svg";
+import { getI18N, type Language } from "@/i18n/utils";
+import { getOtherLocale } from "@/i18n/config";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const currentLocale = Astro.currentLocale || 'en';
+const i18n = getI18N(currentLocale as Language);
+const otherLocale = getOtherLocale(currentLocale as Language);
+const otherLocaleUrl = getRelativeLocaleUrl(otherLocale, '/');
 ---
 
 
@@ -13,8 +21,8 @@ import LinkedInIcon from "@/assets/icons/brand-linkedin.svg";
     <li class="animate-fade-in-down" style="animation-delay: 0.1s;">
        <a
         href="https://github.com/HugoLR"
-        aria-label="Visita mi perfil de GitHub"
-        title="Perfil de GitHub"
+        aria-label={i18n.t('navbar.github.aria_label')}
+        title={i18n.t('navbar.github.title')}
         class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-accent-hover transition-all duration-300 active:scale-95"
         target="_blank"
         rel="noopener noreferrer"
@@ -25,8 +33,8 @@ import LinkedInIcon from "@/assets/icons/brand-linkedin.svg";
     <li class="animate-fade-in-down" style="animation-delay: 0.2s;">
       <a
         href="https://www.linkedin.com/in/hugolr/"
-        aria-label="Visita mi perfil de LinkedIn"
-        title="Perfil de LinkedIn"
+        aria-label={i18n.t('navbar.linkedin.aria_label')}
+        title={i18n.t('navbar.linkedin.title')}
         class="group flex items-center justify-center w-12 h-12 rounded-full hover:bg-accent-hover transition-all duration-300 active:scale-95"
         target="_blank"
         rel="noopener noreferrer"
@@ -38,7 +46,16 @@ import LinkedInIcon from "@/assets/icons/brand-linkedin.svg";
 
   <div class="animate-fade-in-down w-px h-6 mx-1 bg-text-primary" style="animation-delay: 0.3s;"></div>
 
-  <ul>
-    <li class="animate-fade-in-down" style="animation-delay: 0.4s;"><ThemeToggle /></li>
+  <ul class="flex items-center gap-2">
+    <li class="animate-fade-in-down" style="animation-delay: 0.4s;">
+      <a
+        href={otherLocaleUrl}
+        class="group flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full hover:bg-accent-hover transition-all duration-300 active:scale-95"
+        title={i18n.t('navbar.language')}
+      >
+        <span class="text-navbar-icon group-hover:text-white text-xl">{currentLocale === 'en' ? '🇲🇽' : '🇺🇸'}</span>
+      </a>
+    </li>
+    <li class="animate-fade-in-down" style="animation-delay: 0.5s;"><ThemeToggle /></li>
   </ul>
 </nav>
